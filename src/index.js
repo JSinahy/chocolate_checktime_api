@@ -5,6 +5,7 @@ const logger = require('morgan');
 
 const v1Router = require("./v1/routes");
 const v1Register = require("./v1/routes/register");
+const v1Production = require("./v1/routes/production");
 
 const app = express(); 
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1", v1Router);
 app.use("/api/v1/register", v1Register);
+app.use("/api/v1/production", v1Production);
 
 app.use(function(req, res, next) {
     next(createError(404));
