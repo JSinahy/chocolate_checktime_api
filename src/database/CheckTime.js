@@ -16,12 +16,18 @@ const registerTimeDb = (userObject, callback) => {
                     return;
                 }
                 connection.query("SELECT @ESTADO as estado, @MSG as message;", function(err_1, results_1){
-                    console.log("RESULTADOS: " + JSON.stringify(results[0]));
+                    if(err_1) {
+                        console.log("ERROR: " + err_1);
+                        callback(null);
+                        return;
+                    }
                     connection.release();
+                    
                     const response = {
-                        "status": results_1[0]["estado"],
+                        "status": (results_1[0]["estado"] == 1) ? 200 : 400,
                         "message": results_1[0]["message"]
                     }
+                    console.log(response);
                     callback(response);
                 });
                 

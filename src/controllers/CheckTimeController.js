@@ -7,12 +7,14 @@ const registerTimeController = (req, res) => {
     const direction = req.body.direction;
 
 
-    if (!username || !nip || !direction) {
-        res.status(400).send({
-        status: 400,
-        data: { error: "Parameters ':username', ':pass' or ':direction' can not be empty" },
-        });
-    }
+    /*if (!username || !nip || !direction) {
+        res.status(200).send(
+            {
+                status: 400,
+                message: "Parameters '" + username + "', '" + nip + "' or '" + direction + "' can not be empty" ,
+            }
+        );
+    }*/
 
     const userObject = {
         "username": username,
@@ -22,7 +24,7 @@ const registerTimeController = (req, res) => {
 
     registerTimeService.registerTimeService(userObject, (results) => {
         try {
-            res.status(200).send({ status: 200, data: results });
+            res.status(200).send({ status: results.status, message: results.message });
         } catch (error) {
             res.status(400).send({
                 code: 400,
