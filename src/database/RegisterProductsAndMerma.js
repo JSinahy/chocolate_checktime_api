@@ -20,7 +20,6 @@ const registerProductsAndMerma = (productionObject, callback) => {
                 return;
             }
             console.log("RESULTADOS: " + JSON.stringify(results[0]));
-            mysqlObj.connection.release();
             const response = {
                 "status": results_1[0]["estado"],
                 "message": results_1[0]["message"]

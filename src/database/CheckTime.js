@@ -13,8 +13,6 @@ const registerTimeDb = (userObject, callback) => {
             callback(null);
             return;
         }
-        mysqlObj.connection.release();
-
         const response = {
             status: results_1[0]["estado"] == 1 ? 200 : 400,
             message: results_1[0]["message"],

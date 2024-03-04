@@ -9,7 +9,6 @@ const readProductsAndEmployees = (idEmployee, callback) => {
         }
               
         console.log("RESULTADOS: " + JSON.stringify(results[0]));
-        mysqlObj.connection.release();
         var response = {};
         if(results[0] === 0) {
             response = {
