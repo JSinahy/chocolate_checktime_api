@@ -26,7 +26,7 @@ const registerProductsAndMermaController = (req, res) => {
 
     registerProductsAndMermaService.registerProductsAndMermaService(productionObject, (results) => {
         try {
-            res.status(200).send({ status: 200, data: results });
+            res.status(200).send({ results });
         } catch (error) {
             res.status(400).send({
                 code: 400,
