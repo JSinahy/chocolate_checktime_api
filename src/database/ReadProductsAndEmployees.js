@@ -1,7 +1,7 @@
-const {poolConnection, mysqlConnection} = require("./mysql_conf");
+const mysqlObj = require("./mysql_conf");
 
 const readProductsAndEmployees = (idEmployee, callback) => {
-    mysqlConnection.query("CALL chocolate_checktime.Sp_GetProductsAndEmployees(" + idEmployee + ");", function(err_1, results) {
+    mysqlObj.connection.query("CALL chocolate_checktime.Sp_GetProductsAndEmployees(" + idEmployee + ");", function(err_1, results) {
         if(err_1) {
             console.log("ERROR: " + err_1);
             callback(null);
@@ -9,7 +9,7 @@ const readProductsAndEmployees = (idEmployee, callback) => {
         }
               
         console.log("RESULTADOS: " + JSON.stringify(results[0]));
-        mysqlConnection.release();
+        mysqlObj.connection.release();
         var response = {};
         if(results[0] === 0) {
             response = {
