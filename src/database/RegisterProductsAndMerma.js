@@ -19,7 +19,7 @@ const registerProductsAndMerma = (productionObject, callback) => {
                 callback(null);
                 return;
             }
-            console.log("RESULTADOS: " + JSON.stringify(results[0]));
+            console.log("RESULTADOS: " + JSON.stringify(results));
             const response = {
                 "status": results_1[0]["estado"],
                 "message": results_1[0]["message"]
