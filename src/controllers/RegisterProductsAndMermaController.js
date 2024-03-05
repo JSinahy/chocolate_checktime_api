@@ -8,12 +8,16 @@ const registerProductsAndMermaController = (req, res) => {
     const merma         = req.body.merma;
     const forsale       = req.body.forsale;
 
+    if(!merma) merma = 0;
+    if(!production) production = 0
+
 
     if (!idEmployee || !idProduct || !production || !merma || !forsale) {
         res.status(400).send({
         status: 400,
         data: { error: "Parameters ':username', ':pass' or ':direction' can not be empty" },
         });
+        return;
     }
 
     const productionObject = {
